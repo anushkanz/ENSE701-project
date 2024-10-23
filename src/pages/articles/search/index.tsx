@@ -1,41 +1,51 @@
-import React, { FormEvent, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { FormEvent, useState } from 'react';
 import Cookies from 'js-cookie';
 import Link from "next/link";
 import axios from "axios";
 
+// Define the expected shape of the article data
+interface Article {
+  _id: string;
+  title: string;
+  authors: string;
+  source: string;
+  status: string;
+}
+
 const SearchFetcher = () => {
-    const [title, setTitle] = useState("");
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [submitting, setSubmitting] = useState(false);
-    const [error, setError] = useState(null);
+    const [title, setTitle] = useState<string>(""); // Type string for title
+    const [data, setData] = useState<Article[]>([]); // Explicitly type the data as an array of Article objects
+    const [loading, setLoading] = useState<boolean>(false); // Type boolean for loading state
+    const [submitting, setSubmitting] = useState<boolean>(false); // Type boolean for submitting state
+    const [error, setError] = useState<string | null>(null); // Type string or null for error state
     
-    const submitSearchArticle = async (event) => {
-        event.preventDefault(); // Prevent default form submission behavior
-        setLoading(true); // Set loading state to true
-        setError(null); // Clear previous errors
-        
+    // Correct the type of event to FormEvent
+    const submitSearchArticle = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setLoading(true);
+        setError(null);
+
         if (Cookies.get('token')) {
             try {
                 const response = await axios.post(`http://localhost:8082/api/articles/search`, {
-                    title: title.trim() // Use trimmed title to avoid spaces
+                    title: title.trim()
                 }, {
                     headers: {
-                        'Content-Type': 'application/json' // Use 'application/json' for the request
+                        'Content-Type': 'application/json'
                     }
                 });
 
-                setData(response.data); // Set the fetched data
-                setSubmitting(true); // Set submitting to true after data is fetched
+                // Ensure the response data matches the expected shape
+                setData(response.data as Article[]); // Type cast the response data to an array of Article objects
+                setSubmitting(true);
             } catch (error) {
-                setError('An error occurred while fetching articles.'); // Set error state
+                setError('An error occurred while fetching articles.');
             } finally {
-                setLoading(false); // Reset loading state
+                setLoading(false);
             }
         }
     };
-  
+
     return (
         <div className="container mx-auto px-4 sm:px-8">
             <div className="pb-12">

@@ -3,16 +3,28 @@ import Cookies from 'js-cookie';
 import { BrowserRouter, Route } from "react-router-dom";
 import { useRouter } from "next/router";
 
+type Article = {
+    _id: string;
+    title: string;
+    authors: string;
+    source: string;
+    publication_year: string;
+    doi: string;
+    summary: string;
+    linked_discussion: string;
+    status: string;
+  };
+
 const NewDiscussion = () => {
    
-    const [title, setTitle] = useState("");
-    const [authors, setAuthors] = useState("");
-    const [source, setSource] = useState("");
-    const [publication_year, setPubYear] = useState("");
-    const [doi, setDoi] = useState("");
-    const [summary, setSummary] = useState("");
-    const [linked_discussion, setLinkedDiscussion] = useState("");
-    const [status, setStatus] = useState("");
+    const [title, setTitle] = useState<string>("");
+    const [authors, setAuthors] = useState<string>("");
+    const [source, setSource] = useState<string>("");
+    const [publication_year, setPubYear] = useState<string>("");
+    const [doi, setDoi] = useState<string>("");
+    const [summary, setSummary] = useState<string>("");
+    const [linked_discussion, setLinkedDiscussion] = useState<string>("");
+    const [status, setStatus] = useState<string>("");
 
     //Submit 
     const submitNewArticle = async (event: FormEvent<HTMLFormElement>) => {
