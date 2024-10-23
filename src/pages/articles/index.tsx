@@ -37,7 +37,7 @@ const DataFetcher: NextPage = () => {
     if (Cookies.get('token')) {
       console.log(Cookies.get('token'));
       try {
-        const response = await fetch('http://localhost:8082/api/articles', {
+        const response = await fetch('https://ense701-project-backend.onrender.com/api/articles', {
           method: 'GET',
         });
         

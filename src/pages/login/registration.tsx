@@ -29,7 +29,7 @@ const userRegistration = () => {
         formData.append('type', type);
 
         // Perform the POST request
-        const response = await fetch('http://localhost:8082/api/users/', {
+        const response = await fetch('https://ense701-project-backend.onrender.com/api/users/', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

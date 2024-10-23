@@ -26,7 +26,7 @@ export const ViewArticle = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8082/api/articles/${params?.id}`);
+        const { data } = await axios.get(`https://ense701-project-backend.onrender.com/api/articles/${params?.id}`);
         console.log(data);
         setArticle(data);
       } catch (error: any) {

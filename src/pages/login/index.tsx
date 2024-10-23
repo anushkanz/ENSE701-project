@@ -15,7 +15,7 @@ const submitLogin = async (event: FormEvent<HTMLFormElement>) => {
     formData.append('email', email);
     formData.append('password', password);
 
-    let response = await fetch('http://localhost:8082/api/users/login', {
+    let response = await fetch('https://ense701-project-backend.onrender.com/api/users/login', {
         method: "POST",
         headers:{
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

@@ -27,7 +27,7 @@ const SearchFetcher = () => {
 
         if (Cookies.get('token')) {
             try {
-                const response = await axios.post(`http://localhost:8082/api/articles/search`, {
+                const response = await axios.post(`https://ense701-project-backend.onrender.com/api/articles/search`, {
                     title: title.trim()
                 }, {
                     headers: {

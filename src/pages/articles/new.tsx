@@ -29,7 +29,7 @@ const NewDiscussion = () => {
     //Submit 
     const submitNewArticle = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-            let response = await fetch('http://localhost:8082/api/articles', {
+            let response = await fetch('https://ense701-project-backend.onrender.com/api/articles', {
                 method: "POST",
                 headers:{
                     'Content-Type': 'application/x-www-form-urlencoded'

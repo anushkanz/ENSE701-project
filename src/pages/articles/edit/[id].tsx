@@ -34,7 +34,7 @@ export const EditArticleForm = () => {
     event.preventDefault(); // Prevent default form submission
     try {
       // Send the updated article data without params
-      await axios.put(`http://localhost:8082/api/articles/${params?.id}`, article);
+      await axios.put(`https://ense701-project-backend.onrender.com/api/articles/${params?.id}`, article);
       alert('Article updated successfully!'); // Notify the user of success
       //navigate("/articles"); // Redirect to the articles page
     } catch (error: any) {
@@ -46,7 +46,7 @@ export const EditArticleForm = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8082/api/articles/${params?.id}`);
+        const { data } = await axios.get(`https://ense701-project-backend.onrender.com/api/articles/${params?.id}`);
         console.log(data);
         setArticle(data);
       } catch (error: any) {

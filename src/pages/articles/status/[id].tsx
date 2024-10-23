@@ -32,7 +32,7 @@ export const StatusArticle = () => {
     event.preventDefault(); // Prevent the default form submission
     try {
       // Update the status of the article
-      await axios.put(`http://localhost:8082/api/articles/status/${params?.id}`, { status: selected });
+      await axios.put(`https://ense701-project-backend.onrender.com/api/articles/status/${params?.id}`, { status: selected });
       alert('Article status updated successfully!'); // Notify the user
     } catch (error: any) {
       console.error(error.response.data);
@@ -43,7 +43,7 @@ export const StatusArticle = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8082/api/articles/${params?.id}`);
+        const { data } = await axios.get(`https://ense701-project-backend.onrender.com/api/articles/${params?.id}`);
         console.log(data);
         setArticle(data);
         setSelected(data?.status); // Set the initial selected state
