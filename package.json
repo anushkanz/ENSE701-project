@@ -10,7 +10,8 @@
     "lint-staged": "lint-staged",
     "format": "prettier --check .",
     "format:fix": "prettier --write --list-different .",
-    "prepare": "husky",
+    "prepare": "husky install",
+    "create-hook": "husky add .husky/pre-commit \"npm test\"",
     "test": "jest",
     "test:watch": "jest --watch"
   },
