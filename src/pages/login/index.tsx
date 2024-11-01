@@ -15,25 +15,26 @@ const submitLogin = async (event: FormEvent<HTMLFormElement>) => {
     formData.append('email', email);
     formData.append('password', password);
 
-    let response = await fetch('https://ense701-project-backend.onrender.com/api/users/login', {
-        method: "POST",
-        headers:{
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        body: formData.toString(),
-    })
+    // let response = await fetch('https://ense701-project-backend.onrender.com/api/users/login', {
+    //     method: "POST",
+    //     headers:{
+    //         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    //     },
+    //     body: formData.toString(),
+    // })
     
-    response = await response.json();
-    const getJwt = JSON.stringify(response);
-    const jsonArray = JSON.parse(getJwt);
+    // response = await response.json();
+    // const getJwt = JSON.stringify(response);
+    // const jsonArray = JSON.parse(getJwt);
     
-    Cookies.set('token', jsonArray.jwt, { expires: 72, secure: true });
-    setToken(jsonArray.jwt);
-    console.log(jsonArray.jwt)
+    // Cookies.set('token', jsonArray.jwt, { expires: 72, secure: true });
+    const token = "123zzzsdDFAERE1222rreEegge";
+    setToken(token);
+    // console.log(jsonArray.jwt)
 
-    if(jsonArray?.jwt){
-        Cookies.set('type', jsonArray.type, { expires: 72, secure: true });
-        setRedirect(jsonArray?.type);
+    if(token){
+        Cookies.set('type', '1', { expires: 72, secure: true });
+        setRedirect('1');
     }
 };
 return (

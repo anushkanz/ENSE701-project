@@ -135,12 +135,12 @@ const SearchFetcher = () => {
                                     )}
                                   </td>
                                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">
-                                    <Link href={{ pathname: 'articles/view/[id]', query: { id: item._id } }}>
+                                    <Link href={{ pathname: 'view/[id]', query: { id: item._id } }}>
                                       View
                                     </Link>
                                   </td>
                                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">
-                                    <Link href={{ pathname: 'articles/edit/[id]', query: { id: item._id } }}>
+                                    <Link href={{ pathname: 'edit/[id]', query: { id: item._id } }}>
                                       Edit
                                     </Link>
                                   </td>
